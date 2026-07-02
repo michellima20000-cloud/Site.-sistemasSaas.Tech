@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SistemasSaaS.tech — Portfólio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0c1118;
+    --bg-soft: #121926;
+    --panel: #161f2e;
+    --panel-line: #263349;
+    --ink: #eef2f7;
+    --ink-dim: #8fa0b8;
+    --ink-faint: #556278;
+    --teal: #2dd8c8;
+    --teal-soft: rgba(45,216,200,0.12);
+    --orange: #ff8a3d;
+    --green: #34c98f;
+    --cat-saas: #2dd8c8;
+    --cat-site: #5b93ff;
+    --cat-landing: #ff8a3d;
+    --cat-app: #c084fc;
+    --cat-automacao: #34c98f;
+    --radius: 14px;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background: radial-gradient(1200px 600px at 15% -10%, #172033 0%, var(--bg) 55%) fixed, var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 28px;}
+
+  .grid-veil{
+    position:fixed; inset:0; pointer-events:none; z-index:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: radial-gradient(900px 500px at 50% 0%, black, transparent 70%);
+  }
+
+  /* ---------- Nav ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter: blur(10px);
+    background: rgba(12,17,24,0.75);
+    border-bottom:1px solid var(--panel-line);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:14px 28px;}
+  .logo{
+    font-family:var(--display); font-weight:600; font-size:15px; letter-spacing:0.01em;
+    display:flex; align-items:center; gap:10px; flex-shrink:0;
+  }
+  .logo .mark{
+    width:30px; height:30px; border-radius:9px; flex-shrink:0;
+    background:linear-gradient(135deg, var(--teal), #1a8f83);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--display); font-weight:700; font-size:13px; color:#052421;
+    box-shadow:0 4px 14px rgba(45,216,200,0.25);
+  }
+  .logo .name{color:var(--ink);}
+  .logo .name span{color:var(--ink-faint); font-weight:400;}
+  .navlinks{
+    display:flex; gap:2px; font-size:13.5px; color:var(--ink-dim);
+    background:var(--bg-soft); border:1px solid var(--panel-line); border-radius:100px;
+    padding:5px; position:relative;
+  }
+  .navlinks a{
+    padding:8px 16px; border-radius:100px; transition:.2s; position:relative; text-decoration:none;
+    font-weight:500; z-index:1; white-space:nowrap;
+  }
+  .navlinks a:hover{color:var(--ink);}
+  .navlinks a.active{color:#052421; background:var(--teal); box-shadow:0 4px 14px rgba(45,216,200,0.3);}
+  .navcta{
+    font-family:var(--mono); font-size:13px; padding:10px 18px; border-radius:100px;
+    background:var(--teal); color:#052421; font-weight:600; text-decoration:none; flex-shrink:0;
+    transition:transform .15s, box-shadow .15s; box-shadow:0 4px 14px rgba(45,216,200,0.2);
+  }
+  .navcta:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(45,216,200,0.4);}
+
+  /* ---------- Hero ---------- */
+  header.hero{position:relative; z-index:1; padding:90px 0 60px;}
+  .eyebrow{
+    font-family:var(--mono); font-size:12.5px; color:var(--teal);
+    letter-spacing:0.14em; text-transform:uppercase; margin-bottom:22px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:''; width:22px; height:1px; background:var(--teal);}
+  h1{
+    font-family:var(--display); font-weight:700;
+    font-size:clamp(38px, 6vw, 68px); line-height:1.04; letter-spacing:-0.01em;
+    max-width:820px;
+  }
+  h1 .accent{color:var(--teal);}
+  .hero-sub{margin-top:26px; max-width:560px; color:var(--ink-dim); font-size:17px;}
+  .hero-row{display:flex; gap:16px; margin-top:38px; flex-wrap:wrap;}
+  .btn-primary, .btn-ghost{
+    font-family:var(--mono); font-size:14px; padding:13px 22px; border-radius:9px;
+    text-decoration:none; font-weight:500; transition:.18s;
+    display:inline-flex; align-items:center; gap:8px; border:none; cursor:pointer;
+  }
+  .btn-primary{background:var(--teal); color:#052421;}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 26px rgba(45,216,200,0.3);}
+  .btn-ghost{border:1px solid var(--panel-line); color:var(--ink); background:transparent;}
+  .btn-ghost:hover{border-color:var(--teal); color:var(--teal);}
+
+  .stat-strip{
+    margin-top:64px; display:grid; grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--panel-line); border-bottom:1px solid var(--panel-line);
+  }
+  .stat-strip div{padding:22px 0; border-right:1px solid var(--panel-line);}
+  .stat-strip div:last-child{border-right:none;}
+  .stat-num{font-family:var(--display); font-size:28px; font-weight:700; color:var(--teal);}
+  .stat-label{font-family:var(--mono); font-size:12px; color:var(--ink-faint); margin-top:4px;}
+
+  /* ---------- Section shell ---------- */
+  section{position:relative; z-index:1; padding:80px 0; scroll-margin-top:80px;}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:42px; gap:20px; flex-wrap:wrap;}
+  .section-head h2{font-family:var(--display); font-size:clamp(26px,3.4vw,36px); font-weight:600;}
+  .section-head p{color:var(--ink-dim); font-size:14.5px; max-width:380px;}
+
+  /* ---------- Services ---------- */
+  .services{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--panel-line); border:1px solid var(--panel-line); border-radius:var(--radius); overflow:hidden;}
+  .service{background:var(--panel); padding:30px 26px; transition:background .2s;}
+  .service:hover{background:#1a2436;}
+  .service .icon{width:38px; height:38px; margin-bottom:20px; color:var(--teal);}
+  .service h3{font-family:var(--display); font-size:18px; font-weight:600; margin-bottom:10px;}
+  .service p{color:var(--ink-dim); font-size:14px;}
+
+  /* ---------- Portfolio filters ---------- */
+  .filter-row{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px;}
+  .filter-pill{
+    font-family:var(--mono); font-size:12.5px; padding:8px 15px; border-radius:20px;
+    background:var(--panel); border:1px solid var(--panel-line); color:var(--ink-dim);
+    cursor:pointer; transition:.18s;
+  }
+  .filter-pill:hover{border-color:var(--teal);}
+  .filter-pill.active{background:var(--pill-color, var(--teal)); color:#052421; border-color:var(--pill-color, var(--teal)); font-weight:500;}
+
+  /* ---------- Portfolio grid ---------- */
+  .grid-projects{display:grid; grid-template-columns:repeat(2,1fr); gap:22px;}
+  .card{
+    background:var(--panel); border:1px solid var(--panel-line); border-radius:var(--radius);
+    overflow:hidden; transition:border-color .2s, transform .2s, box-shadow .2s;
+    display:flex; flex-direction:column; cursor:pointer;
+    --cat-color: var(--teal);
+  }
+  .card:hover{border-color:var(--cat-color); transform:translateY(-4px); box-shadow:0 16px 32px rgba(0,0,0,0.35);}
+  .browser-bar{
+    display:flex; align-items:center; gap:6px; padding:10px 14px;
+    background:var(--bg-soft); border-bottom:1px solid var(--panel-line);
+    border-top:2px solid var(--cat-color);
+  }
+  .browser-bar span{width:9px; height:9px; border-radius:50%; background:var(--panel-line);}
+  .browser-bar .url{
+    font-family:var(--mono); font-size:11px; color:var(--ink-faint);
+    margin-left:8px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  .card-media{
+    height:230px; position:relative; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg,#111826,#1c2740);
+  }
+  .card-media img{width:100%; height:100%; object-fit:cover; transition:transform .4s;}
+  .card:hover .card-media img{transform:scale(1.06);}
+  .card-media .ph-icon{color:var(--panel-line); width:52px; height:52px;}
+  .tag-cat{
+    position:absolute; top:10px; left:10px; font-family:var(--mono); font-size:10.5px;
+    padding:4px 9px; border-radius:20px; background:rgba(0,0,0,0.6); color:var(--cat-color);
+    border:1px solid var(--cat-color); text-transform:uppercase; letter-spacing:.05em; z-index:2;
+  }
+  .expand-hint{
+    position:absolute; bottom:10px; right:10px; font-family:var(--mono); font-size:10px;
+    background:rgba(0,0,0,0.55); color:var(--ink-dim); padding:4px 9px; border-radius:20px;
+    opacity:0; transition:.2s; z-index:2;
+  }
+  .card:hover .expand-hint{opacity:1;}
+  .photo-count{
+    position:absolute; bottom:10px; left:10px; font-family:var(--mono); font-size:10px;
+    background:rgba(0,0,0,0.6); color:var(--ink); padding:4px 9px; border-radius:20px; z-index:2;
+  }
+  .card-body{padding:20px 22px 22px; flex:1; display:flex; flex-direction:column;}
+  .card-body h3{font-family:var(--display); font-size:18px; font-weight:600; margin-bottom:8px;}
+  .card-body p{color:var(--ink-dim); font-size:13.5px; flex:1; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
+  .tech-tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:14px;}
+  .tech-tags span{
+    font-family:var(--mono); font-size:10.5px; color:var(--ink-dim);
+    background:var(--bg-soft); border:1px solid var(--panel-line); padding:3px 8px; border-radius:5px;
+  }
+  .card-foot{display:flex; justify-content:space-between; align-items:center; margin-top:16px;}
+  .card-link{font-family:var(--mono); font-size:12.5px; color:var(--teal); text-decoration:none;}
+  .card-link:hover{text-decoration:underline;}
+  .card-del{
+    background:none; border:none; color:var(--ink-faint); cursor:pointer; font-size:12px;
+    font-family:var(--mono); position:relative; z-index:3;
+  }
+  .card-del:hover{color:#ff6b6b;}
+
+  .add-card{
+    border:1px dashed var(--panel-line); border-radius:var(--radius);
+    display:flex; align-items:center; justify-content:center; flex-direction:column; gap:10px;
+    min-height:300px; cursor:pointer; color:var(--ink-faint); transition:.2s;
+    background:transparent;
+  }
+  .add-card:hover{border-color:var(--teal); color:var(--teal); background:var(--teal-soft);}
+  .add-card .plus{font-size:28px; font-family:var(--display); font-weight:600;}
+  .add-card span{font-family:var(--mono); font-size:12.5px;}
+
+  .empty-msg{grid-column:1/-1; text-align:center; padding:50px 20px; color:var(--ink-faint); font-family:var(--mono); font-size:13px;}
+
+  /* ---------- Sobre ---------- */
+  .about-grid{display:grid; grid-template-columns:280px 1fr; gap:44px; align-items:start;}
+  .about-card{
+    background:var(--panel); border:1px solid var(--panel-line); border-radius:var(--radius);
+    padding:28px; text-align:center;
+  }
+  .avatar{
+    width:84px; height:84px; border-radius:50%; margin:0 auto 16px;
+    background:linear-gradient(135deg, var(--teal), var(--orange));
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--display); font-weight:700; font-size:26px; color:#052421;
+  }
+  .about-card h3{font-family:var(--display); font-size:18px; margin-bottom:4px;}
+  .about-card .role{font-family:var(--mono); font-size:12px; color:var(--teal); margin-bottom:18px;}
+  .skill-row{display:flex; flex-wrap:wrap; gap:6px; justify-content:center;}
+  .skill-row span{
+    font-family:var(--mono); font-size:10.5px; background:var(--bg-soft); border:1px solid var(--panel-line);
+    padding:4px 9px; border-radius:5px; color:var(--ink-dim);
+  }
+  .about-text p{color:var(--ink-dim); font-size:15px; margin-bottom:16px;}
+  .about-text strong{color:var(--ink);}
+  .timeline{margin-top:24px; border-left:1px solid var(--panel-line); padding-left:22px; display:flex; flex-direction:column; gap:18px;}
+  .timeline-item{position:relative;}
+  .timeline-item::before{content:''; position:absolute; left:-27px; top:5px; width:9px; height:9px; border-radius:50%; background:var(--teal); box-shadow:0 0 0 3px var(--teal-soft);}
+  .timeline-item h4{font-family:var(--display); font-size:14.5px; font-weight:600;}
+  .timeline-item p{font-size:13px; color:var(--ink-dim); margin-top:2px;}
+
+  /* ---------- Suporte / FAQ ---------- */
+  .faq-list{display:flex; flex-direction:column; gap:1px; background:var(--panel-line); border:1px solid var(--panel-line); border-radius:var(--radius); overflow:hidden;}
+  .faq-item{background:var(--panel);}
+  .faq-q{
+    padding:20px 24px; display:flex; justify-content:space-between; align-items:center;
+    cursor:pointer; font-family:var(--display); font-size:15.5px; font-weight:600;
+  }
+  .faq-q .plus-icon{color:var(--teal); font-size:20px; transition:transform .25s; flex-shrink:0; margin-left:16px;}
+  .faq-item.open .plus-icon{transform:rotate(45deg);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .3s ease;}
+  .faq-a p{padding:0 24px 20px; color:var(--ink-dim); font-size:14px; max-width:640px;}
+
+  /* ---------- Modals ---------- */
+  .overlay{
+    position:fixed; inset:0; background:rgba(7,10,15,0.75); backdrop-filter:blur(4px);
+    display:none; align-items:center; justify-content:center; z-index:100; padding:20px;
+  }
+  .overlay.open{display:flex;}
+  .modal{
+    background:var(--panel); border:1px solid var(--panel-line); border-radius:16px;
+    width:100%; max-width:480px; padding:30px; max-height:90vh; overflow-y:auto;
+  }
+  .modal h3{font-family:var(--display); font-size:20px; margin-bottom:22px;}
+  .field{margin-bottom:16px;}
+  .field label{
+    display:block; font-family:var(--mono); font-size:11.5px; color:var(--ink-dim);
+    margin-bottom:7px; text-transform:uppercase; letter-spacing:.04em;
+  }
+  .field input, .field textarea, .field select{
+    width:100%; background:var(--bg-soft); border:1px solid var(--panel-line); border-radius:8px;
+    padding:11px 13px; color:var(--ink); font-family:var(--body); font-size:14px;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus{outline:none; border-color:var(--teal);}
+  .field textarea{resize:vertical; min-height:70px;}
+  #img-preview-box:hover{border-color:var(--teal); color:var(--teal);}
+  .modal-actions{display:flex; gap:10px; margin-top:24px;}
+  .modal-actions button{
+    font-family:var(--mono); font-size:13.5px; padding:12px 18px; border-radius:8px; cursor:pointer; border:none; flex:1;
+  }
+  .btn-save{background:var(--teal); color:#052421; font-weight:500;}
+  .btn-cancel{background:transparent; border:1px solid var(--panel-line) !important; color:var(--ink-dim);}
+
+  /* Lightbox / project detail */
+  .lightbox{max-width:640px; padding:0; overflow:hidden;}
+  .lb-media{height:320px; background:linear-gradient(135deg,#111826,#1c2740); display:flex; align-items:center; justify-content:center; overflow:hidden; position:relative;}
+  .lb-media img{width:100%; height:100%; object-fit:cover;}
+  .lb-media .ph-icon{width:64px; height:64px; color:var(--panel-line);}
+  .lb-close{
+    position:absolute; top:14px; right:14px; width:32px; height:32px; border-radius:50%;
+    background:rgba(0,0,0,0.55); border:none; color:#fff; cursor:pointer; font-size:16px; z-index:3;
+  }
+  .lb-nav{
+    position:absolute; top:50%; transform:translateY(-50%); width:36px; height:36px; border-radius:50%;
+    background:rgba(0,0,0,0.5); border:none; color:#fff; cursor:pointer; font-size:20px; z-index:3;
+    display:flex; align-items:center; justify-content:center; transition:background .2s;
+  }
+  .lb-nav:hover{background:rgba(0,0,0,0.75);}
+  .lb-prev{left:14px;} .lb-next{right:14px;}
+  .lb-dots{position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:3;}
+  .lb-dots span{width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.35);}
+  .lb-dots span.on{background:#fff;}
+  .lb-body{padding:28px 30px 30px;}
+  .lb-cat{font-family:var(--mono); font-size:11px; color:var(--teal); text-transform:uppercase; letter-spacing:.05em;}
+  .lb-body h3{font-family:var(--display); font-size:24px; margin:8px 0 14px;}
+  .lb-body p.desc{color:var(--ink-dim); font-size:14.5px; margin-bottom:18px;}
+  .lb-actions{display:flex; gap:12px; margin-top:22px;}
+  .lb-actions a, .lb-actions button{
+    font-family:var(--mono); font-size:13.5px; padding:12px 20px; border-radius:9px; text-decoration:none; cursor:pointer; border:none;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-panel{
+    background:var(--panel); border:1px solid var(--panel-line); border-radius:20px;
+    padding:52px 44px; display:flex; justify-content:space-between; align-items:center; gap:30px; flex-wrap:wrap;
+  }
+  .contact-panel h2{font-family:var(--display); font-size:clamp(24px,3vw,32px); max-width:420px;}
+  .contact-links{display:flex; gap:14px; flex-wrap:wrap;}
+  .contact-links a{
+    display:flex; align-items:center; gap:10px; padding:13px 20px; border-radius:10px;
+    background:var(--bg-soft); border:1px solid var(--panel-line); text-decoration:none; font-size:14px; transition:.2s;
+  }
+  .contact-links a:hover{border-color:var(--teal); transform:translateY(-2px);}
+  .contact-links svg{width:19px; height:19px;}
+
+  footer{padding:34px 0 50px; text-align:center; color:var(--ink-faint); font-family:var(--mono); font-size:12px; position:relative; z-index:1;}
+
+  @media (max-width:760px){
+    .services{grid-template-columns:1fr;}
+    .grid-projects{grid-template-columns:1fr;}
+    .stat-strip{grid-template-columns:1fr;}
+    .stat-strip div{border-right:none; border-bottom:1px solid var(--panel-line); padding:16px 0;}
+    .navlinks{display:none;}
+    .contact-panel{padding:36px 24px;}
+    .about-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Scroll reveal ---------- */
+  .reveal{
+    opacity:0; transform:translateY(28px);
+    transition:opacity .7s cubic-bezier(.16,.84,.44,1), transform .7s cubic-bezier(.16,.84,.44,1);
+  }
+  .reveal.in-view{opacity:1; transform:none;}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1 !important; transform:none !important; transition:none !important;}
+  }
+</style>
+</head>
+<body>
+<div class="grid-veil"></div>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">
+      <span class="mark">SS</span>
+      <span class="name">sistemasaas<span>.tech</span></span>
+    </div>
+    <div class="navlinks" id="navlinks">
+      <a href="#servicos" data-sec="servicos">Serviços</a>
+      <a href="#portfolio" data-sec="portfolio">Portfólio</a>
+      <a href="#sobre" data-sec="sobre">Sobre</a>
+      <a href="#suporte" data-sec="suporte">Suporte</a>
+      <a href="#contato" data-sec="contato">Contato</a>
+    </div>
+    <a class="navcta" href="https://wa.me/5585988122526" target="_blank">Solicitar orçamento</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Desenvolvimento de sistemas &amp; sites</div>
+    <h1>Sistemas sob medida.<br>Sites que <span class="accent">convertem</span>.</h1>
+    <p class="hero-sub">Este é o meu portfólio vivo — cada sistema, painel ou site que eu construo entra aqui, com foto e link reais. Um lugar só para o público ver o que já foi feito de verdade.</p>
+    <div class="hero-row">
+      <a class="btn-primary" href="#portfolio">Ver projetos ↓</a>
+      <a class="btn-ghost" href="https://wa.me/5585988122526" target="_blank">Falar no WhatsApp</a>
+    </div>
+    <div class="stat-strip">
+      <div>
+        <div class="stat-num" id="stat-projects">3</div>
+        <div class="stat-label">PROJETOS PUBLICADOS</div>
+      </div>
+      <div>
+        <div class="stat-num">SaaS · Sites · Apps</div>
+        <div class="stat-label">TIPOS DE ENTREGA</div>
+      </div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">SOB MEDIDA</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="servicos">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>O que eu construo</h2>
+      <p>As três frentes de trabalho que sustentam este portfólio.</p>
+    </div>
+    <div class="services">
+      <div class="service reveal" style="transition-delay:0ms">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 18a4 4 0 1 1 .7-7.94A5.5 5.5 0 0 1 18 12.5 3.5 3.5 0 0 1 17.5 18H7Z"/></svg>
+        <h3>Soluções SaaS sob medida</h3>
+        <p>Plataformas web construídas do zero para automatizar e escalar operações reais.</p>
+      </div>
+      <div class="service reveal" style="transition-delay:90ms">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg>
+        <h3>Sites e landing pages</h3>
+        <p>Páginas rápidas e diretas, desenhadas para converter visita em conversa.</p>
+      </div>
+      <div class="service reveal" style="transition-delay:180ms">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 2v4M15 2v4M4 8h16M6 8v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8"/></svg>
+        <h3>Automação de processos</h3>
+        <p>Fluxos comerciais que hoje são manuais, transformados em sistema.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Portfólio</h2>
+      <p>Filtre por tipo de projeto ou clique num card para ver em detalhe.</p>
+    </div>
+    <div class="filter-row" id="filter-row"></div>
+    <div style="display:flex; justify-content:flex-end; margin:-14px 0 22px;">
+      <button class="btn-ghost" id="clear-all-btn" style="font-size:12.5px; padding:9px 16px; color:var(--ink-faint);">🗑 Limpar tudo e começar do zero</button>
+    </div>
+    <div class="grid-projects" id="grid-projects"></div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Sobre</h2>
+      <p>Quem está por trás dos sistemas que você viu acima.</p>
+    </div>
+    <div style="display:flex; justify-content:flex-end; margin:-14px 0 22px;">
+      <button class="btn-ghost" id="edit-about-btn" style="font-size:12.5px; padding:9px 16px;">✏️ Editar</button>
+    </div>
+    <div class="about-grid" id="about-content"></div>
+  </div>
+</section>
+
+<!-- Edit About modal -->
+<div class="overlay" id="about-overlay">
+  <div class="modal">
+    <h3>Editar seção Sobre</h3>
+    <div class="field">
+      <label>Nome / marca</label>
+      <input id="a-name" type="text" placeholder="Ex: SistemasSaaS">
+    </div>
+    <div class="field">
+      <label>Cargo / função</label>
+      <input id="a-role" type="text" placeholder="Ex: Dev de Sistemas & Sites">
+    </div>
+    <div class="field">
+      <label>Skills (separadas por vírgula)</label>
+      <input id="a-skills" type="text" placeholder="React, Node.js, SaaS, UX/UI">
+    </div>
+    <div class="field">
+      <label>Bio — parágrafo 1</label>
+      <textarea id="a-bio1" placeholder="Sua apresentação principal"></textarea>
+    </div>
+    <div class="field">
+      <label>Bio — parágrafo 2</label>
+      <textarea id="a-bio2" placeholder="Complemento sobre seu trabalho"></textarea>
+    </div>
+    <div class="field">
+      <label>Etapa 1 — título e descrição</label>
+      <input id="a-t1-title" type="text" placeholder="Ex: Descoberta" style="margin-bottom:8px;">
+      <input id="a-t1-desc" type="text" placeholder="Descrição curta da etapa">
+    </div>
+    <div class="field">
+      <label>Etapa 2 — título e descrição</label>
+      <input id="a-t2-title" type="text" placeholder="Ex: Construção" style="margin-bottom:8px;">
+      <input id="a-t2-desc" type="text" placeholder="Descrição curta da etapa">
+    </div>
+    <div class="field">
+      <label>Etapa 3 — título e descrição</label>
+      <input id="a-t3-title" type="text" placeholder="Ex: Suporte contínuo" style="margin-bottom:8px;">
+      <input id="a-t3-desc" type="text" placeholder="Descrição curta da etapa">
+    </div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeAboutModal()">Cancelar</button>
+      <button class="btn-save" onclick="saveAbout()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<section id="suporte">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Suporte</h2>
+      <p>Dúvidas comuns antes de solicitar um orçamento.</p>
+    </div>
+    <div class="faq-list" id="faq-list"></div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="wrap">
+    <div class="contact-panel reveal">
+      <h2>Tem um sistema ou site para tirar do papel?</h2>
+      <div class="contact-links">
+        <a href="https://wa.me/5585988122526" target="_blank">
+          <svg viewBox="0 0 24 24" fill="#34c98f"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.32 4.95L2 22l5.24-1.37a9.94 9.94 0 0 0 4.8 1.22h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2Z"/></svg>
+          (85) 98812-2526
+        </a>
+        <a href="https://instagram.com/sistemasaas.tech" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          @sistemasaas.tech
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>sistemasaas.tech — portfólio de sistemas e sites</footer>
+
+<!-- Add project modal -->
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <h3>Adicionar projeto</h3>
+    <div class="field">
+      <label>Nome do projeto</label>
+      <input id="f-name" type="text" placeholder="Ex: BarberFlow">
+    </div>
+    <div class="field">
+      <label>Categoria</label>
+      <select id="f-cat">
+        <option>SaaS</option>
+        <option>Site</option>
+        <option>Landing Page</option>
+        <option>App</option>
+        <option>Automação</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Descrição curta</label>
+      <textarea id="f-desc" placeholder="O que o sistema faz, para quem, e o problema que resolve."></textarea>
+    </div>
+    <div class="field">
+      <label>Tecnologias (separadas por vírgula)</label>
+      <input id="f-tech" type="text" placeholder="React, Node.js, PostgreSQL">
+    </div>
+    <div class="field">
+      <label>Link do projeto</label>
+      <input id="f-link" type="text" placeholder="https://...">
+    </div>
+    <div class="field">
+      <label>Imagem do projeto</label>
+      <input id="f-img-file" type="file" accept="image/*" style="display:none" onchange="handleImgUpload(event)">
+      <div id="img-preview-box" onclick="document.getElementById('f-img-file').click()" style="cursor:pointer; height:150px; border-radius:10px; overflow:hidden; background:var(--bg-soft); border:1.5px dashed var(--panel-line); display:flex; align-items:center; justify-content:center; color:var(--ink-faint); font-family:var(--mono); font-size:11.5px; flex-direction:column; gap:8px; text-align:center; padding:10px; transition:.2s;">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+        <span>clique para escolher uma foto do seu computador</span>
+      </div>
+      <button type="button" id="img-remove-btn" onclick="removeImg()" style="display:none; margin-top:8px; background:none; border:none; color:var(--ink-faint); font-family:var(--mono); font-size:11.5px; cursor:pointer; text-decoration:underline;">remover imagem</button>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
+      <button class="btn-save" onclick="saveProject()">Salvar projeto</button>
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox project detail -->
+<div class="overlay" id="lb-overlay">
+  <div class="modal lightbox" id="lb-content"></div>
+</div>
+
+<!-- Confirm modal (reused for delete / clear all) -->
+<div class="overlay" id="confirm-overlay">
+  <div class="modal" style="max-width:380px;">
+    <h3 id="confirm-title">Confirmar</h3>
+    <p id="confirm-msg" style="color:var(--ink-dim); font-size:14px; margin-bottom:6px;"></p>
+    <div class="modal-actions">
+      <button class="btn-cancel" id="confirm-cancel">Cancelar</button>
+      <button class="modal-actions button" id="confirm-ok" style="background:#ff6b6b; color:#2a0808; font-weight:500; font-family:var(--mono); font-size:13.5px; padding:12px 18px; border-radius:8px; border:none; cursor:pointer;">Apagar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const CAT_COLORS = {
+  'SaaS':'var(--cat-saas)',
+  'Site':'var(--cat-site)',
+  'Landing Page':'var(--cat-landing)',
+  'App':'var(--cat-app)',
+  'Automação':'var(--cat-automacao)'
+};
+function catColor(cat){ return CAT_COLORS[cat] || 'var(--teal)'; }
+
+const DEFAULT_PROJECTS = [
+  { id:'default-1', name:'BarberFlow', cat:'App', desc:'App de gestão para barbearias: agenda, fila e controle financeiro em um só painel.', tech:['React Native','Node.js','PostgreSQL'], link:'', images:[] },
+  { id:'default-2', name:'Painel de Analytics', cat:'SaaS', desc:'Dashboard de métricas em tempo real com gráficos de faturamento e conversão.', tech:['React','Recharts','Supabase'], link:'', images:[] },
+  { id:'default-3', name:'Site institucional', cat:'Site', desc:'Site de apresentação com foco em conversão e integração com WhatsApp.', tech:['HTML/CSS','JavaScript'], link:'', images:[] }
+];
+
+const FAQ = [
+  { q:'Quanto tempo leva para desenvolver um sistema?', a:'Depende do escopo. Landing pages saem em poucos dias; sistemas SaaS completos costumam levar algumas semanas. O prazo exato é combinado no orçamento.' },
+  { q:'Vocês dão suporte depois da entrega?', a:'Sim. Todo projeto sai com um período de acompanhamento pós-entrega para ajustes e correções.' },
+  { q:'Como funciona o orçamento?', a:'Chame no WhatsApp, conte o que precisa e eu retorno com escopo, prazo e valor — sem compromisso.' },
+  { q:'Consigo pedir alterações depois que o sistema estiver no ar?', a:'Sim, novas funções e melhorias podem ser feitas a qualquer momento como uma nova etapa do projeto.' }
+];
+
+let projects = [];
+let activeFilter = 'Todos';
+
+function normalizeProject(p){
+  // migração: projetos antigos tinham "img" único, agora usamos "images: []"
+  if(!p.images){ p.images = p.img ? [p.img] : []; }
+  return p;
+}
+
+async function loadProjects(){
+  try{
+    const res = await window.storage.get('portfolio-projects', false);
+    projects = res && res.value ? JSON.parse(res.value) : DEFAULT_PROJECTS;
+  }catch(e){
+    projects = DEFAULT_PROJECTS;
+  }
+  projects = projects.map(normalizeProject);
+  renderFilters();
+  render();
+}
+
+async function persist(){
+  try{ await window.storage.set('portfolio-projects', JSON.stringify(projects), false); }
+  catch(e){ console.error('Falha ao salvar', e); }
+}
+
+function iconPlaceholder(size){
+  return `<svg class="ph-icon" style="width:${size}px;height:${size}px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 16l5-5 4 4 5-6 4 5"/></svg>`;
+}
+
+function imgFallback(imgEl){
+  const wrapper = imgEl.parentElement;
+  imgEl.remove();
+  const holder = document.createElement('div');
+  holder.style.cssText = 'display:flex;align-items:center;justify-content:center;width:100%;height:100%;color:var(--panel-line)';
+  holder.innerHTML = iconPlaceholder(52);
+  wrapper.insertBefore(holder, wrapper.firstChild.nextSibling || null);
+}
+
+function renderFilters(){
+  const cats = ['Todos', ...new Set(projects.map(p => p.cat))];
+  const row = document.getElementById('filter-row');
+  row.innerHTML = cats.map(c => `<button class="filter-pill ${c===activeFilter?'active':''}" style="--pill-color:${c==='Todos'?'var(--teal)':catColor(c)}" data-cat="${c}">${c}</button>`).join('');
+  row.querySelectorAll('.filter-pill').forEach(btn => {
+    btn.onclick = () => { activeFilter = btn.dataset.cat; renderFilters(); render(); };
+  });
+}
+
+function render(){
+  const grid = document.getElementById('grid-projects');
+  document.getElementById('stat-projects').textContent = projects.length;
+  grid.innerHTML = '';
+
+  const visible = activeFilter === 'Todos' ? projects : projects.filter(p => p.cat === activeFilter);
+
+  if(visible.length === 0){
+    grid.innerHTML = `<div class="empty-msg">Nenhum projeto nessa categoria ainda.</div>`;
+  }
+
+  visible.forEach((p, i) => {
+    const card = document.createElement('div');
+    card.className = 'card reveal';
+    card.style.transitionDelay = Math.min(i * 70, 280) + 'ms';
+    card.style.setProperty('--cat-color', catColor(p.cat));
+    const urlLabel = p.link ? p.link.replace(/^https?:\/\//,'') : (p.name.toLowerCase().replace(/\s+/g,'') + '.app');
+    const cover = (p.images && p.images[0]) || '';
+    const extraCount = p.images && p.images.length > 1 ? p.images.length - 1 : 0;
+    card.innerHTML = `
+      <div class="browser-bar">
+        <span></span><span></span><span></span>
+        <span class="url">${urlLabel}</span>
+      </div>
+      <div class="card-media">
+        <span class="tag-cat">${p.cat}</span>
+        ${cover ? `<img src="${cover}" alt="${p.name}" onerror="imgFallback(this)">` : iconPlaceholder(52)}
+        ${extraCount > 0 ? `<span class="photo-count">+${extraCount} foto${extraCount>1?'s':''}</span>` : ''}
+        <span class="expand-hint">clique para ampliar</span>
+      </div>
+      <div class="card-body">
+        <h3>${p.name}</h3>
+        <p>${p.desc || ''}</p>
+        <div class="tech-tags">${(p.tech||[]).map(t=>`<span>${t}</span>`).join('')}</div>
+        <div class="card-foot">
+          ${p.link ? `<a class="card-link" href="${p.link}" target="_blank" onclick="event.stopPropagation()">Ver projeto →</a>` : `<span class="card-link" style="color:var(--ink-faint)">Sem link</span>`}
+          <button class="card-del" onclick="event.stopPropagation(); confirmDeleteOne('${p.id}', '${p.name.replace(/'/g,"\\'")}')">remover</button>
+        </div>
+      </div>
+    `;
+    card.addEventListener('click', () => openLightbox(p));
+    grid.appendChild(card);
+  });
+
+  const addCard = document.createElement('div');
+  addCard.className = 'add-card reveal';
+  addCard.style.transitionDelay = Math.min(visible.length * 70, 280) + 'ms';
+  addCard.onclick = openModal;
+  addCard.innerHTML = `<div class="plus">+</div><span>ADICIONAR PROJETO</span>`;
+  grid.appendChild(addCard);
+
+  observeReveals();
+}
+
+let lbImages = [];
+let lbIndex = 0;
+
+function openLightbox(p){
+  const urlLabel = p.link ? p.link.replace(/^https?:\/\//,'') : (p.name.toLowerCase().replace(/\s+/g,'') + '.app');
+  lbImages = p.images || [];
+  lbIndex = 0;
+  document.getElementById('lb-content').innerHTML = `
+    <div class="lb-media" id="lb-media" style="border-top:3px solid ${catColor(p.cat)}"></div>
+    <div class="lb-body">
+      <div class="lb-cat" style="color:${catColor(p.cat)}">${p.cat} · ${urlLabel}</div>
+      <h3>${p.name}</h3>
+      <p class="desc">${p.desc || 'Sem descrição adicionada.'}</p>
+      <div class="tech-tags">${(p.tech||[]).map(t=>`<span>${t}</span>`).join('')}</div>
+      <div class="lb-actions">
+        ${p.link ? `<a class="btn-primary" href="${p.link}" target="_blank">Abrir projeto ↗</a>` : ''}
+        <button class="btn-ghost" onclick="closeLightbox()">Fechar</button>
+      </div>
+    </div>
+  `;
+  renderLbMedia();
+  document.getElementById('lb-overlay').classList.add('open');
+}
+
+function renderLbMedia(){
+  const media = document.getElementById('lb-media');
+  const hasMulti = lbImages.length > 1;
+  media.innerHTML = `
+    <button class="lb-close" onclick="closeLightbox()">✕</button>
+    ${lbImages.length ? `<img src="${lbImages[lbIndex]}" alt="">` : iconPlaceholder(64)}
+    ${hasMulti ? `
+      <button class="lb-nav lb-prev" onclick="lbStep(-1)">‹</button>
+      <button class="lb-nav lb-next" onclick="lbStep(1)">›</button>
+      <div class="lb-dots">${lbImages.map((_,i)=>`<span class="${i===lbIndex?'on':''}"></span>`).join('')}</div>
+    ` : ''}
+  `;
+}
+function lbStep(dir){
+  lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
+  renderLbMedia();
+}
+function closeLightbox(){ document.getElementById('lb-overlay').classList.remove('open'); }
+
+function openModal(){ document.getElementById('overlay').classList.add('open'); }
+function closeModal(){
+  document.getElementById('overlay').classList.remove('open');
+  ['f-name','f-desc','f-tech','f-link'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('f-cat').selectedIndex = 0;
+  document.getElementById('f-img-file').value = '';
+  currentImgData = '';
+  document.getElementById('img-remove-btn').style.display = 'none';
+  resetImgBox();
+}
+
+async function saveProject(){
+  const name = document.getElementById('f-name').value.trim();
+  if(!name){ document.getElementById('f-name').focus(); return; }
+  const p = {
+    id: 'p-' + Date.now(),
+    name,
+    cat: document.getElementById('f-cat').value,
+    desc: document.getElementById('f-desc').value.trim(),
+    tech: document.getElementById('f-tech').value.split(',').map(t=>t.trim()).filter(Boolean),
+    link: document.getElementById('f-link').value.trim(),
+    img: currentImgData
+  };
+  projects.unshift(p);
+  await persist();
+  renderFilters();
+  render();
+  closeModal();
+}
+
+async function deleteProject(id){
+  projects = projects.filter(p => p.id !== id);
+  await persist();
+  renderFilters();
+  render();
+}
+
+// ---- Confirm modal (delete one / clear all) ----
+function showConfirm(title, msg, onConfirm){
+  document.getElementById('confirm-title').textContent = title;
+  document.getElementById('confirm-msg').textContent = msg;
+  document.getElementById('confirm-overlay').classList.add('open');
+  const okBtn = document.getElementById('confirm-ok');
+  const cancelBtn = document.getElementById('confirm-cancel');
+  const cleanup = () => {
+    document.getElementById('confirm-overlay').classList.remove('open');
+    okBtn.onclick = null; cancelBtn.onclick = null;
+  };
+  okBtn.onclick = () => { cleanup(); onConfirm(); };
+  cancelBtn.onclick = cleanup;
+}
+
+function confirmDeleteOne(id, name){
+  showConfirm('Remover projeto', `Tem certeza que quer apagar "${name}"? Essa ação não pode ser desfeita.`, () => deleteProject(id));
+}
+
+document.getElementById('clear-all-btn').addEventListener('click', () => {
+  if(projects.length === 0) return;
+  showConfirm('Limpar tudo', `Isso vai apagar os ${projects.length} projeto(s) do portfólio e você começa do zero. Tem certeza?`, async () => {
+    projects = [];
+    await persist();
+    activeFilter = 'Todos';
+    renderFilters();
+    render();
+  });
+});
+
+// ---- Image upload (from device) ----
+let currentImgData = '';
+
+function compressImage(file, maxW, quality){
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        let w = img.width, h = img.height;
+        if(w > maxW){ h = Math.round(h * (maxW / w)); w = maxW; }
+        const canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+        resolve(canvas.toDataURL('image/jpeg', quality));
+      };
+      img.onerror = reject;
+      img.src = e.target.result;
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+async function handleImgUpload(event){
+  const file = event.target.files[0];
+  if(!file) return;
+  const box = document.getElementById('img-preview-box');
+  box.innerHTML = '<span>carregando...</span>';
+  try{
+    currentImgData = await compressImage(file, 1100, 0.85);
+    box.innerHTML = `<img src="${currentImgData}" style="width:100%;height:100%;object-fit:cover">`;
+    document.getElementById('img-remove-btn').style.display = 'inline-block';
+  }catch(e){
+    box.innerHTML = '<span>não deu pra ler essa imagem, tenta outra</span>';
+  }
+}
+
+function removeImg(){
+  currentImgData = '';
+  document.getElementById('f-img-file').value = '';
+  document.getElementById('img-remove-btn').style.display = 'none';
+  resetImgBox();
+}
+
+function resetImgBox(){
+  document.getElementById('img-preview-box').innerHTML = `
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+    <span>clique para escolher uma foto do seu computador</span>
+  `;
+}
+
+document.getElementById('overlay').addEventListener('click', (e) => { if(e.target.id === 'overlay') closeModal(); });
+document.getElementById('confirm-overlay').addEventListener('click', (e) => { if(e.target.id === 'confirm-overlay') document.getElementById('confirm-overlay').classList.remove('open'); });
+document.getElementById('lb-overlay').addEventListener('click', (e) => { if(e.target.id === 'lb-overlay') closeLightbox(); });
+
+// FAQ accordion
+function renderFaq(){
+  const list = document.getElementById('faq-list');
+  list.innerHTML = FAQ.map((f,i) => `
+    <div class="faq-item reveal" style="transition-delay:${Math.min(i*70,210)}ms" data-i="${i}">
+      <div class="faq-q">${f.q}<span class="plus-icon">+</span></div>
+      <div class="faq-a"><p>${f.a}</p></div>
+    </div>
+  `).join('');
+  list.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const answer = item.querySelector('.faq-a');
+      const isOpen = item.classList.contains('open');
+      list.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight = null; });
+      if(!isOpen){ item.classList.add('open'); answer.style.maxHeight = answer.scrollHeight + 'px'; }
+    });
+  });
+  observeReveals();
+}
+
+// Scroll-spy nav
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.navlinks a');
+const spy = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      navLinks.forEach(l => l.classList.remove('active'));
+      const link = document.querySelector(`.navlinks a[data-sec="${entry.target.id}"]`);
+      if(link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-45% 0px -50% 0px' });
+sections.forEach(s => spy.observe(s));
+
+// Clique nos links do menu e nos CTAs internos rola até a seção (mais confiável que âncora nativa)
+function scrollToSection(id){
+  const target = document.getElementById(id);
+  if(!target) return;
+  const navH = document.querySelector('nav').offsetHeight;
+  const top = target.getBoundingClientRect().top + window.scrollY - navH + 1;
+  window.scrollTo({ top, behavior: 'smooth' });
+}
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    const id = a.getAttribute('href').slice(1);
+    if(document.getElementById(id)){
+      e.preventDefault();
+      scrollToSection(id);
+    }
+  });
+});
+
+// ---- About section (editável) ----
+const DEFAULT_ABOUT = {
+  name: 'SistemasSaaS',
+  role: 'Dev de Sistemas & Sites',
+  skills: ['React','Node.js','SaaS','UX/UI','Automação'],
+  bio1: 'Trabalho criando sistemas, sites e automações sob medida para negócios que precisam sair do improviso — planilha virando painel, atendimento manual virando fluxo automático.',
+  bio2: 'Cada projeto no portfólio acima foi entregue e está no ar. A ideia deste site é justamente essa: mostrar trabalho real, com link real, sem enrolação.',
+  timeline: [
+    { title:'Descoberta', desc:'Entendo o processo atual do negócio e onde ele trava.' },
+    { title:'Construção', desc:'Desenvolvo o sistema ou site sob medida, com entregas visíveis no caminho.' },
+    { title:'Suporte contínuo', desc:'Acompanho pós-entrega para ajustes, melhorias e novas funções.' }
+  ]
+};
+let aboutData = DEFAULT_ABOUT;
+
+async function loadAbout(){
+  try{
+    const res = await window.storage.get('about-info', false);
+    aboutData = res && res.value ? JSON.parse(res.value) : DEFAULT_ABOUT;
+  }catch(e){ aboutData = DEFAULT_ABOUT; }
+  renderAbout();
+}
+
+function initials(name){
+  return name.trim().split(/\s+/).map(w => w[0]).slice(0,2).join('').toUpperCase() || 'SS';
+}
+
+function renderAbout(){
+  const el = document.getElementById('about-content');
+  el.innerHTML = `
+    <div class="about-card reveal">
+      <div class="avatar">${initials(aboutData.name)}</div>
+      <h3>${aboutData.name}</h3>
+      <div class="role">${aboutData.role}</div>
+      <div class="skill-row">${(aboutData.skills||[]).map(s=>`<span>${s}</span>`).join('')}</div>
+    </div>
+    <div class="about-text reveal" style="transition-delay:100ms">
+      <p>${aboutData.bio1 || ''}</p>
+      <p>${aboutData.bio2 || ''}</p>
+      <div class="timeline">
+        ${(aboutData.timeline||[]).map(t => `
+          <div class="timeline-item">
+            <h4>${t.title}</h4>
+            <p>${t.desc}</p>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+  observeReveals();
+}
+
+function openAboutModal(){
+  document.getElementById('a-name').value = aboutData.name || '';
+  document.getElementById('a-role').value = aboutData.role || '';
+  document.getElementById('a-skills').value = (aboutData.skills||[]).join(', ');
+  document.getElementById('a-bio1').value = aboutData.bio1 || '';
+  document.getElementById('a-bio2').value = aboutData.bio2 || '';
+  const t = aboutData.timeline || [];
+  document.getElementById('a-t1-title').value = t[0]?.title || '';
+  document.getElementById('a-t1-desc').value = t[0]?.desc || '';
+  document.getElementById('a-t2-title').value = t[1]?.title || '';
+  document.getElementById('a-t2-desc').value = t[1]?.desc || '';
+  document.getElementById('a-t3-title').value = t[2]?.title || '';
+  document.getElementById('a-t3-desc').value = t[2]?.desc || '';
+  document.getElementById('about-overlay').classList.add('open');
+}
+function closeAboutModal(){ document.getElementById('about-overlay').classList.remove('open'); }
+
+async function saveAbout(){
+  aboutData = {
+    name: document.getElementById('a-name').value.trim() || 'SistemasSaaS',
+    role: document.getElementById('a-role').value.trim(),
+    skills: document.getElementById('a-skills').value.split(',').map(s=>s.trim()).filter(Boolean),
+    bio1: document.getElementById('a-bio1').value.trim(),
+    bio2: document.getElementById('a-bio2').value.trim(),
+    timeline: [
+      { title: document.getElementById('a-t1-title').value.trim(), desc: document.getElementById('a-t1-desc').value.trim() },
+      { title: document.getElementById('a-t2-title').value.trim(), desc: document.getElementById('a-t2-desc').value.trim() },
+      { title: document.getElementById('a-t3-title').value.trim(), desc: document.getElementById('a-t3-desc').value.trim() }
+    ].filter(t => t.title || t.desc)
+  };
+  try{ await window.storage.set('about-info', JSON.stringify(aboutData), false); }catch(e){ console.error(e); }
+  renderAbout();
+  closeAboutModal();
+}
+
+document.getElementById('edit-about-btn').addEventListener('click', openAboutModal);
+document.getElementById('about-overlay').addEventListener('click', (e) => { if(e.target.id === 'about-overlay') closeAboutModal(); });
+
+// ---- Scroll reveal ----
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('in-view');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+function observeReveals(){
+  document.querySelectorAll('.reveal:not([data-observed])').forEach(el => {
+    el.dataset.observed = '1';
+    revealObserver.observe(el);
+  });
+}
+observeReveals();
+
+loadProjects();
+renderFaq();
+loadAbout();
+</script>
+</body>
+</html>
